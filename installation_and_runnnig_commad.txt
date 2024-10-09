@@ -1,0 +1,32 @@
+sudo apt install -y g++ cmake make git libgtk2.0-dev pkg-config
+git clone https://github.com/opencv/opencv.git
+mkdir -p build && cd build
+cmake ../opencv
+make -j4
+sudo make install
+gcc read_an_image.c 
+cd /usr/local/include/
+vi CMakeLists.txt
+cmake .
+make
+sudo apt-get install libopencv-dev
+pkg-config --cflags opencv4
+gcc -I/usr/include/opencv4 read_an_image.c 
+gcc -I/usr/include/opencv4 read_an_image.c 
+gcc -I/usr/include/opencv4 read_an_image.cpp 
+
+"g++ -std=c++11 -o outputfile read_an_image.cpp `pkg-config --cflags --libs opencv4`"  - commad explation
+
+* This is a command line instruction to compile a C++ file using the g++ compiler. Here's a breakdown of each part:
+
+* g++: This is the GNU C++ compiler. It's used to compile C++ source files.
+
+* -std=c++11: This is a compiler flag that tells g++ to use the C++11 standard when compiling your code. C++11 introduced many new features to the language, and this flag ensures that you can use these features in your code.
+
+* -o outputfile: This is another compiler flag. The -o flag is used to specify the name of the output file that g++ should create. In this case, the output file will be named outputfile.
+
+* read_an_image.cpp: This is the C++ source file that you want to compile.
+
+* `pkg-config --cflags --libs opencv4`: This is a command substitution. The pkg-config command is used to retrieve information about installed libraries. The --cflags option retrieves the compiler flags necessary for compiling code that uses the specified library (in this case, opencv4), and the --libs option retrieves the linker flags necessary for linking against the library. The output of this command is inserted into the g++ command.
+
+So, in summary, this command compiles the read_an_image.cpp file using the C++11 standard, links against the opencv4 library, and outputs an executable named outputfile.
